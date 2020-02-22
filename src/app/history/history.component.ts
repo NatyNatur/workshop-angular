@@ -12,13 +12,15 @@ export class HistoryComponent implements OnInit, OnChanges {
 
   constructor( private connect:ConnectService) { 
     this.connect._onDataHistory.subscribe(res => {
-      console.log('HistoryComponent -> conect ->', res)
+      // console.log('HistoryComponent -> conect ->', res)
       this.setHistoryList(res);
     })
   }
 
   setHistoryList(item: any) {
-    this.dataHistory.push(item)
+    if (Object.keys(item).length !== 0) {
+      this.dataHistory.push(item);
+    }
   }
 
   ngOnInit(): void {
