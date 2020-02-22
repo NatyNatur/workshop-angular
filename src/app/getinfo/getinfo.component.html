@@ -1,6 +1,12 @@
 <form>
     <div class="form-group">
-      <label for="formGroupExampleInput">Consultor de API</label>
-      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Ingresa nombre">
+      <label for="inputGetInfo">Consultor de API</label>
+      <input type="text" class="form-control" name="inputGetInfo"  [(ngModel)]="url" id="inputGetInfo" placeholder="Ingresa nombre">
+    </div>
+
+    <button class="btn btn-success btn-sm" name="btnGetInfo" (click)="getData()"> Enviar</button>
+
+    <div class="col">
+        {{arrayInfo | json}}
     </div>
   </form>
