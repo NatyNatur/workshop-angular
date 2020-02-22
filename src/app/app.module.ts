@@ -11,6 +11,7 @@ import { MainComponent } from './main/main.component';
 import { CardComponent } from './card/card.component';
 import { HistoryComponent } from './history/history.component';
 import { GetinfoComponent } from './getinfo/getinfo.component';
+import { ConnectService } from './services/connect.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { GetinfoComponent } from './getinfo/getinfo.component';
     HttpClientModule
   ],
   providers: [
-    BackendService
+    BackendService,
+    ConnectService
   ],
   bootstrap: [AppComponent]
 })

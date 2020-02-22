@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { ConnectService } from '../services/connect.service';
 
 @Component({
   selector: 'history',
@@ -7,17 +8,23 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 })
 export class HistoryComponent implements OnInit, OnChanges {
 
-  @Input() inHistory: any;
   dataHistory:any = [];
 
-  constructor() { }
+  constructor( private connect:ConnectService) { 
+    this.connect._onDataHistory.subscribe(res => {
+      console.log('HistoryComponent -> conect ->', res)
+      this.setHistoryList(res);
+    })
+  }
+
+  setHistoryList(item: any) {
+    this.dataHistory.push(item)
+  }
 
   ngOnInit(): void {
   }
 
   ngOnChanges(): void {
-    if(this.inHistory) {
-      this.dataHistory.push(this.inHistory)
-    }
+  
   }
 }

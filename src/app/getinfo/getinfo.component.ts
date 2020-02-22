@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { BackendService} from '../services/backend.service';
+import { ConnectService } from '../services/connect.service';
 
 @Component({
   selector: 'getinfo',
@@ -13,7 +14,7 @@ export class GetinfoComponent implements OnInit {
   @Output() outGetInfo = new EventEmitter();
 
   // se inserta el servicio
-  constructor( private backend:BackendService) { }
+  constructor( private backend:BackendService, private connect:ConnectService) { }
 
   ngOnInit(): void {
   }
@@ -27,6 +28,9 @@ export class GetinfoComponent implements OnInit {
       //this.arrayInfo = res;
       // guardo en el output lo que deseo emitir a los otros componentes
       this.outGetInfo.emit(res[0]);
+
+      // mediante el servicio se crea el historial
+      this.connect.setHistory(res[0]);
     })
   }
 }
