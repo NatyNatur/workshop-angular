@@ -11,6 +11,7 @@ export class BackendService {
   constructor(private http: HttpClient) { }
 
   exeGet(url:any) {
+    //return directo
     return this.http.get(url)
   }
 }
